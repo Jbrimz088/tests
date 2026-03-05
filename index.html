@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ad Rotator</title>
+    <style>
+        body { display: flex; flex-direction: column; align-items: center; background: #f0f0f0; }
+        .ad-container { width: 300px; height: 250px; border: 2px solid red; margin: 10px; overflow: hidden; }
+        img { width: 100%; height: 100%; object-fit: cover; }
+    </style>
+</head>
+<body>
+
+    <h1>Ad Network Test</h1>
+    <div id="ad1" class="ad-container"></div>
+    <div id="ad2" class="ad-container"></div>
+    <div id="ad3" class="ad-container"></div>
+
+    <script>
+        const adImages = [
+            'https://placehold.co/300x250/orange/white?text=BUY+NOW',
+            'https://placehold.co/300x250/blue/white?text=WIN+PRIZE',
+            'https://placehold.co/300x250/green/white?text=CLICK+HERE',
+            'https://placehold.co/300x250/purple/white?text=CHEAP+DEALS'
+        ];
+
+        function rotateAds() {
+            const containers = document.querySelectorAll('.ad-container');
+            containers.forEach(container => {
+                const randomAd = adImages[Math.floor(Math.random() * adImages.length)];
+                container.innerHTML = `<img src="${randomAd}" alt="Ad">`;
+            });
+        }
+
+        // Change every 500ms (0.5 seconds)
+        setInterval(rotateAds, 500);
+        rotateAds(); // Initial call
+    </script>
+</body>
+</html>
